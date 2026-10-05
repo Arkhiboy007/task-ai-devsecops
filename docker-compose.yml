@@ -1,0 +1,23 @@
+services:
+  web:
+    build: ./web
+    image: ${IMAGE:-devsecops-ai-web:latest}
+    container_name: aitriage-web
+    ports:
+        - "8080:5000"
+    environment:
+      - REDIS_HOST=redis
+      - STUDENT=Uday Singh Rawat - 16014124804
+    depends_on:
+      - redis
+    networks:
+      - labnet
+
+  redis:
+    image: redis:7-alpine
+    container_name: aitriage-redis
+    networks:
+      - labnet
+
+networks:
+  labnet:
