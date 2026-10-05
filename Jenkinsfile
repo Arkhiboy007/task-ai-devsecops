@@ -1,4 +1,4 @@
-pipeline {
+﻿pipeline {
     agent any
 
     stages {
@@ -16,6 +16,13 @@ pipeline {
                 echo 'Checking Python source code...'
                 bat 'python -m py_compile ci\\ai_triage.py'
                 bat 'python -m py_compile web\\app.py'
+            }
+        }
+
+        stage('Bandit Security Scan') {
+            steps {
+                echo 'Running Bandit security scan...'
+                bat 'python -m bandit -r ci web -ll'
             }
         }
 
