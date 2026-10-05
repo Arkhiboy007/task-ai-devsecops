@@ -28,8 +28,8 @@ pipeline {
 
         stage('Docker Compose Validation') {
             steps {
-                echo 'Validating Docker Compose configuration...'
-                bat 'docker compose config'
+                echo 'Validating docker-compose configuration...'
+                bat 'docker-compose config'
             }
         }
     }
